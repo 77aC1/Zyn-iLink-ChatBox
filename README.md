@@ -34,3 +34,5 @@ QQ交流群:
 
 # 注意 对方扫码连接后，需要先让微信用户发一条消息来获取token正常聊天!
 
+# 赞助
+<img width="1080" height="1621" alt="Image" src="https://github.com/user-attachments/assets/25c04fca-4b30-4e10-8ce8-3e7ee627f203" />
