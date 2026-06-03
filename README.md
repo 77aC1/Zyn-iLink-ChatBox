@@ -50,12 +50,7 @@
 
 ## 🚀 快速开始
 
-### 1️⃣ 克隆仓库
-
-```bash
-git clone https://github.com/zynsync/Zyn-iLink-ChatBox.git
-cd Zyn-iLink-ChatBox
-```
+### 1️⃣ 下载版本
 
 2️⃣ 安装依赖
 
