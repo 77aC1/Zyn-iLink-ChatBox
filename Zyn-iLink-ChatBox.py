@@ -2815,7 +2815,6 @@ window.ZynWasm.init();
                     self._send_json({'success': False, 'error': str(e)})
             
             def _handle_add_user_start(self, data):
-                """处理添加用户请求，启动后台线程生成二维码"""
                 try:
                     with bot._add_user_lock:
                         if bot._pending_qrcode and bot._pending_qrcode.get("status") not in ("done", "error", "expired"):
@@ -2843,7 +2842,6 @@ window.ZynWasm.init();
                     self._send_json({'success': False, 'error': str(e)})
             
             def _serve_add_user_status(self):
-                """轮询添加用户状态"""
                 try:
                     status = bot.get_add_user_status()
                     was_done = status.get("status") == "done"
@@ -3967,7 +3965,6 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         return text, media_info
     
     def start_add_user_qrcode(self) -> str:
-        """生成新的二维码用于添加新用户（新 bot 账号），在独立线程中运行"""
         def _gen_qrcode():
             try:
                 url = f"{self.ILINK_BASE_URL}/ilink/bot/get_bot_qrcode?bot_type=3"
@@ -4076,7 +4073,6 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         return qrcode_key
     
     def _fetch_and_restore_for_account(self, bot_token: str, account: dict):
-        """为指定 bot 账号拉取历史会话"""
         for _ in range(5):
             body = {"get_updates_buf": account.get("cursor", "")}
             result = self._post("getupdates", body, timeout=5, token=bot_token)
@@ -4113,7 +4109,6 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         print(f"[账号 {bot_token[:8]}...] 已恢复 {user_count} 个会话")
     
     def get_add_user_status(self) -> dict:
-        """获取添加用户的状态"""
         with self._add_user_lock:
             if not self._pending_qrcode:
                 return {"status": "none", "message": "没有进行中的添加操作"}
@@ -4132,7 +4127,6 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             self._start_account_poll(bot_token, account)
     
     def _start_account_poll(self, bot_token: str, account: dict):
-        """为单个 bot 账号启动轮询线程"""
         def poll():
             cursor = account.get("cursor", "")
             while self._running:
