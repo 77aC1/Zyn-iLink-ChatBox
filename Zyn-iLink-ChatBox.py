@@ -3927,10 +3927,10 @@ class WeChatiLinkBot:
         setTimeout((function() { return n.classList.remove("show"); }), t || 3000);
     };
     
-    const _svgImage = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#999" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
-    const _svgVideo = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#999" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>';
-    const _svgFile = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#999" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
-    const _svgVoice = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#999" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>';
+    const _svgImage = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
+    const _svgVideo = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>';
+    const _svgFile = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+    const _svgVoice = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>';
     const _svgPlay = '<svg viewBox="0 0 24 24" width="36" height="36" fill="rgba(0,0,0,0.5)"><path d="M8 5v14l11-7z"/></svg>';
 
     const _renderMsg = function(e) {
@@ -6906,7 +6906,7 @@ class WeChatiLinkBot:
                         listEl.innerHTML = '<div style="font-size:13px;color:var(--text-secondary);padding:8px 0;">暂无注册用户</div>';
                     } else {
                         listEl.innerHTML = users.map(function(u, i) {
-                            var statusColor = u.online ? '#4CAF50' : '#999';
+                            var statusColor = u.online ? 'var(--accent)' : 'var(--text-secondary)';
                             var statusText = u.online ? '在线' : '离线';
                             var ipText = u.last_ip ? _escape(u.last_ip) : '-';
                             return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--divider);"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:13px;color:var(--text-secondary);min-width:24px;">' + (i+1) + '.</span><div><div style="font-size:15px;font-weight:500;color:var(--text-primary);">' + _escape(u.username) + '</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">IP: ' + ipText + '</div></div></div><span style="font-size:12px;color:' + statusColor + ';">' + statusText + '</span></div>';
@@ -6963,11 +6963,11 @@ class WeChatiLinkBot:
                     var text = document.getElementById("cf-status-text");
                     var urlEl = document.getElementById("cf-url-display");
                     if (cfResp.running) {
-                        if (dot) dot.style.background = "#4CAF50";
+                        if (dot) dot.style.background = "var(--accent)";
                         if (text) text.textContent = "运行中" + (cfResp.url ? " - " + cfResp.url : "");
                         if (urlEl && cfResp.url) urlEl.textContent = "隧道地址: " + cfResp.url;
                     } else {
-                        if (dot) dot.style.background = "#999";
+                        if (dot) dot.style.background = "var(--text-secondary)";
                         if (text) text.textContent = "未运行";
                         if (urlEl) urlEl.textContent = "";
                     }
@@ -7812,18 +7812,17 @@ html, body {
 .media-panel-inner { padding: 20px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; justify-items: center; }
 .media-option { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
 .media-option:active .media-option-icon { transform: scale(0.96); }
-.media-option-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--bg-primary); display: flex; align-items: center; justify-content: center; font-size: 26px; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.06), inset 0 0 0 0.5px var(--divider); }
+.media-option-icon { width: 56px; height: 56px; border-radius: var(--card-round); background: var(--bg-secondary); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; font-size: 26px; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard); }
 .media-option-label { font-size: 11px; color: var(--text-secondary); text-align: center; line-height: 1.2; }
 .media-upload-progress { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.45); display: none; align-items: center; justify-content: center; z-index: 10001; }
 .media-upload-progress.show { display: flex; animation: fadeIn 0.25s ease; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.media-upload-box { background: rgba(0,0,0,0.75); border-radius: 20px; padding: 28px 32px; text-align: center; color: #fff; min-width: 140px; animation: modalPop calc(0.35s * var(--anim-duration)) var(--ease-out); }
+.media-upload-box { background: var(--bg-primary); border-radius: var(--card-round); padding: 28px 32px; text-align: center; color: var(--text-primary); min-width: 140px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
 @keyframes modalPop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.media-upload-spinner { width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.2); border-top: 3px solid #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 14px; }
-.media-upload-text { font-size: 14px; }
-.bubble-media-img { max-width: 200px; max-height: 200px; border-radius: 12px; cursor: pointer; display: block; object-fit: cover; }
+.media-upload-spinner { width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.2); border-top: 3px solid var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 14px; }
+.bubble-media-img { max-width: 200px; max-height: 200px; border-radius: var(--card-round); cursor: pointer; display: block; object-fit: cover; }
 .bubble-media-file { display: flex; align-items: center; gap: 10px; min-width: 180px; cursor: pointer; }
-.bubble-media-file-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.bubble-media-file-icon { width: 40px; height: 40px; border-radius: var(--card-round); background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
 .bubble-media-file-info { flex: 1; min-width: 0; }
 .bubble-media-file-name { font-size: 14px; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
 .bubble.out .bubble-media-file-name { color: #FFFFFF; }
@@ -8029,16 +8028,16 @@ html, body {
 .lock-screen-forgot-btn:active { opacity: 0.7; }
 .lock-screen-error { color: #FF3B30; font-size: 13px; text-align: center; margin-bottom: 8px; min-height: 18px; }
 .lock-screen-reset { width: 100%; max-width: 320px; }
-.lock-screen-reset-input { width: 100%; height: 44px; border: none; border-radius: 12px; padding: 0 16px; font-size: 15px; outline: none; background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); margin-bottom: 10px; text-align: center; }
-.lock-screen-reset-input:focus { box-shadow: 0 4px 16px rgba(10,132,255,0.12), inset 0 0 0 1px var(--accent); }
+.lock-screen-reset-input { width: 100%; height: 44px; border: none; border-radius: 12px; padding: 0 16px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 10px; text-align: center; }
+.lock-screen-reset-input:focus { background: var(--bg-primary); box-shadow: 0 0 0 1.5px var(--accent); }
 .lock-screen-reset-btn { width: 100%; height: 44px; border-radius: 12px; border: none; background: var(--accent); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: transform 0.2s; margin-bottom: 8px; }
 .lock-screen-reset-btn:active { transform: scale(0.96); }
 .lock-screen-reset-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .lock-screen-back-btn { background: none; border: none; color: var(--text-secondary); font-size: 14px; cursor: pointer; padding: 8px 16px; margin-top: 4px; }
 .lock-screen-back-btn:active { opacity: 0.7; }
 .captcha-row { display: flex; align-items: center; gap: 6px; width: 100%; margin-bottom: 10px; }
-.captcha-input { flex: 1; min-width: 0; height: 44px; border: none; border-radius: 12px; padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); text-align: center; letter-spacing: 2px; }
-.captcha-input:focus { box-shadow: 0 4px 16px rgba(10,132,255,0.12), inset 0 0 0 1px var(--accent); }
+.captcha-input { flex: 1; min-width: 0; height: 44px; border: none; border-radius: var(--card-round); padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); text-align: center; letter-spacing: 2px; }
+.captcha-input:focus { background: var(--bg-primary); box-shadow: 0 0 0 1.5px var(--accent); }
 .captcha-img { height: 44px; max-width: 100px; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
 .captcha-refresh { width: 32px; height: 44px; border: none; border-radius: 10px; background: var(--bg-primary); color: var(--text-secondary); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); }
 .captcha-refresh:active { transform: scale(0.96); }
@@ -8086,8 +8085,8 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .user-list-header { height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); }
 .user-list-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
 .user-list-add-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.user-list-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: transparent; padding-top: 72px; padding-bottom: 90px; }
-.user-list-body { padding: 12px 16px; }
+.user-list-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--chat-bg); padding-bottom: 90px; }
+.user-list-body { padding: 12px var(--card-mx); }
 @media (max-width: 768px) { .pc-sidebar-nav { display: none !important; } .bottom-tab-bar { gap: 8px; padding: 8px 12px; border-radius: 20px; } .bottom-tab-item { padding: 5px 14px; } .bottom-tab-item-icon { font-size: 20px; } .bottom-tab-item-label { font-size: 9px; } }
 @media (max-width: 480px) { .bottom-tab-bar { gap: 6px; padding: 8px 10px; border-radius: 18px; } .bottom-tab-item { padding: 4px 12px; } .bottom-tab-item-icon { font-size: 18px; } .bottom-tab-item-label { font-size: 9px; } }
 .chat-menu-dropdown { position: absolute; top: 100%; right: 0; background: var(--bg-primary); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.15), inset 0 0 0 0.5px var(--divider); min-width: 160px; z-index: 100; display: none; margin-top: 4px; overflow: hidden; }
@@ -8224,19 +8223,19 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         <div id="media-panel" class="media-panel">
             <div class="media-panel-inner">
                 <div class="media-option" id="media-photo">
-                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
                     <div class="media-option-label">相册</div>
                 </div>
                 <div class="media-option" id="media-camera">
-                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
                     <div class="media-option-label">拍摄</div>
                 </div>
                 <div class="media-option" id="media-video">
-                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
                     <div class="media-option-label">视频</div>
                 </div>
                 <div class="media-option" id="media-file">
-                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                    <div class="media-option-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
                     <div class="media-option-label">文件</div>
                 </div>
             </div>
@@ -10318,8 +10317,8 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 450; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; height: 100%; }
-:root { --bg-primary: #FFFFFF; --bg-secondary: #F5F5F5; --accent: #0A84FF; --accent-hover: #0973E0; --accent-light: rgba(10,132,255,0.08); --text-primary: #1A1A1A; --text-secondary: #8C8C8C; --text-hint: #BFBFBF; --divider: #E9E9E9; --chat-bg: #F0F0F0; }
-[data-theme="dark"] { --bg-primary: #2A2A2E; --bg-secondary: #1C1C1E; --accent: #0A84FF; --accent-hover: #0973E0; --accent-light: rgba(10,132,255,0.15); --text-primary: #F5F5F7; --text-secondary: #8E8E93; --text-hint: #636366; --divider: #3A3A3E; --chat-bg: #1A1A1E; }
+:root { --bg-primary: #FFFFFF; --bg-secondary: #F2F2F6; --accent: #0A84FF; --accent-hover: #0973E0; --accent-light: rgba(10,132,255,0.08); --text-primary: #1C1C1E; --text-secondary: #8E8E93; --text-hint: #C6C6C8; --divider: #E5E5EA; --chat-bg: #F2F2F6; }
+[data-theme="dark"] { --bg-primary: #2C2C2E; --bg-secondary: #1C1C1E; --accent: #0A84FF; --accent-hover: #0973E0; --accent-light: rgba(10,132,255,0.15); --text-primary: #F5F5F7; --text-secondary: #8E8E93; --text-hint: #636366; --divider: #38383A; --chat-bg: #1C1C1E; }
 .lock-screen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--chat-bg); z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
 .lock-screen-logo { font-size: 48px; margin-bottom: 16px; }
 .lock-screen-title { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
@@ -10335,16 +10334,16 @@ html, body { font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", "Hirag
 .lock-screen-forgot-btn:active { opacity: 0.7; }
 .lock-screen-error { color: #FF3B30; font-size: 13px; text-align: center; margin-bottom: 8px; min-height: 18px; }
 .lock-screen-reset { width: 100%; max-width: 320px; }
-.lock-screen-reset-input { width: 100%; height: 44px; border: none; border-radius: 12px; padding: 0 16px; font-size: 15px; outline: none; background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); margin-bottom: 10px; text-align: center; }
-.lock-screen-reset-input:focus { box-shadow: 0 4px 16px rgba(10,132,255,0.12), inset 0 0 0 1px var(--accent); }
+.lock-screen-reset-input { width: 100%; height: 44px; border: none; border-radius: 12px; padding: 0 16px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 10px; text-align: center; }
+.lock-screen-reset-input:focus { background: var(--bg-primary); box-shadow: 0 0 0 1.5px var(--accent); }
 .lock-screen-reset-btn { width: 100%; height: 44px; border-radius: 12px; border: none; background: var(--accent); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: transform 0.2s; margin-bottom: 8px; }
 .lock-screen-reset-btn:active { transform: scale(0.96); }
 .lock-screen-reset-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .lock-screen-back-btn { background: none; border: none; color: var(--text-secondary); font-size: 14px; cursor: pointer; padding: 8px 16px; margin-top: 4px; }
 .lock-screen-back-btn:active { opacity: 0.7; }
 .captcha-row { display: flex; align-items: center; gap: 6px; width: 100%; margin-bottom: 10px; }
-.captcha-input { flex: 1; min-width: 0; height: 44px; border: none; border-radius: 12px; padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); text-align: center; letter-spacing: 2px; }
-.captcha-input:focus { box-shadow: 0 4px 16px rgba(10,132,255,0.12), inset 0 0 0 1px var(--accent); }
+.captcha-input { flex: 1; min-width: 0; height: 44px; border: none; border-radius: var(--card-round); padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); text-align: center; letter-spacing: 2px; }
+.captcha-input:focus { background: var(--bg-primary); box-shadow: 0 0 0 1.5px var(--accent); }
 .captcha-img { height: 44px; max-width: 100px; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
 .captcha-refresh { width: 32px; height: 44px; border: none; border-radius: 10px; background: var(--bg-primary); color: var(--text-secondary); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); }
 .captcha-refresh:active { transform: scale(0.96); }
