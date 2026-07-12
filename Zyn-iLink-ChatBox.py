@@ -6851,6 +6851,15 @@ class WeChatiLinkBot:
                 else { _toast((resp && resp.error) || "操作失败"); }
             } catch(e) { _toast("操作失败"); }
         });
+        var regSwitch = document.getElementById("admin-register-switch");
+        if (regSwitch) regSwitch.addEventListener("click", async function() {
+            var isOn = regSwitch.classList.toggle("on");
+            try {
+                var resp = await _api("set-registration", {enabled: isOn});
+                if (resp && resp.success) { _toast(isOn ? "注册已开放" : "注册已关闭"); }
+                else { regSwitch.classList.toggle("on"); _toast((resp && resp.error) || "操作失败"); }
+            } catch(e) { regSwitch.classList.toggle("on"); _toast("操作失败"); }
+        });
         var emailSwitch = document.getElementById("admin-email-register-switch");
         if (emailSwitch) emailSwitch.addEventListener("click", async function() {
             var isOn = emailSwitch.classList.toggle("on");
@@ -6940,6 +6949,15 @@ class WeChatiLinkBot:
                         }
                     }
                     if (configSection) configSection.style.display = emailSwitch && emailSwitch.classList.contains("on") ? "" : "none";
+                    var regSwitch = document.getElementById("admin-register-switch");
+                    if (regSwitch) {
+                        var isRegOpen = !!adminResp.registration_enabled;
+                        var regCurrentOn = regSwitch.classList.contains("on");
+                        if (regCurrentOn !== isRegOpen) {
+                            if (isRegOpen) regSwitch.classList.add("on");
+                            else regSwitch.classList.remove("on");
+                        }
+                    }
                 }
             } catch(e) {}
             try {
@@ -7323,6 +7341,8 @@ window.ZynWasm.init();
                     if data is None:
                         return
                     self._handle_set_reset_email(data)
+                elif parsed.path == '/api/wasm/set-registration':
+                    self._handle_set_registration(data)
                 elif parsed.path == '/api/wasm/set-email-register':
                     self._handle_set_email_register(data)
                 else:
@@ -8066,11 +8086,11 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .appearance-slider::-webkit-slider-thumb:active { transform: scale(0.92); }
 .appearance-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: white; cursor: pointer; border: 2px solid var(--accent); box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
 .appearance-slider-val { min-width: 36px; text-align: center; font-size: 14px; font-weight: 600; color: var(--accent); }
-.bottom-tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; justify-content: center; gap: 4px; z-index: 1001; padding: 8px 12px; background: var(--nav-bg); border-radius: 24px; border: 0.5px solid var(--divider); box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform calc(0.35s * var(--anim-duration)) var(--ease-out), opacity calc(0.3s * var(--anim-duration)); margin-bottom: 12px; }
+.bottom-tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; justify-content: center; gap: 6px; z-index: 1001; padding: 8px 14px; background: var(--nav-bg); border-radius: 28px; border: 0.5px solid var(--divider); box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform calc(0.35s * var(--anim-duration)) var(--ease-out), opacity calc(0.3s * var(--anim-duration)); margin-bottom: 12px; }
 .bottom-tab-bar.hidden { transform: translateX(-50%) translateY(100px); opacity: 0; pointer-events: none; }
-.bottom-tab-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px 18px; border-radius: 20px; cursor: pointer; transition: background 0.2s; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; border: none; background: transparent; color: var(--text-secondary); }
+.bottom-tab-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 7px 20px; border-radius: 28px; cursor: pointer; transition: background 0.2s; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; border: none; background: transparent; color: var(--text-secondary); }
 .bottom-tab-item:active { transform: scale(0.92); }
-.bottom-tab-item.active { color: var(--accent); background: var(--accent-light); }
+.bottom-tab-item.active { color: var(--accent); background: var(--accent-light); border-radius: 28px; }
 .bottom-tab-item-icon { font-size: 22px; display: flex; align-items: center; justify-content: center; }
 .bottom-tab-item-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3px; }
 .user-list-page { display: none; flex-direction: column; width: 100%; height: 100vh; height: 100dvh; background: var(--chat-bg); }
@@ -8093,8 +8113,8 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .user-list-page .chat-list-items { background: var(--setting-item-bg); border-radius: var(--card-round); margin: 12px var(--card-mx); overflow: hidden; padding: 0; }
 .user-list-page .chat-list-items > .chat-list-item { background: transparent; border-radius: 0; margin: 0; border-bottom: 0.5px solid var(--divider); }
 .user-list-page .chat-list-items > .chat-list-item:last-child { border-bottom: none; }
-@media (max-width: 768px) { .pc-sidebar-nav { display: none !important; } .bottom-tab-bar { gap: 6px; padding: 6px 10px; border-radius: 22px; } .bottom-tab-item { padding: 5px 14px; } .bottom-tab-item-icon { font-size: 20px; } .bottom-tab-item-label { font-size: 9px; } }
-@media (max-width: 480px) { .bottom-tab-bar { gap: 4px; padding: 4px 8px; border-radius: 18px; } .bottom-tab-item { padding: 4px 12px; } .bottom-tab-item-icon { font-size: 18px; } .bottom-tab-item-label { font-size: 9px; } }
+@media (max-width: 768px) { .pc-sidebar-nav { display: none !important; } .bottom-tab-bar { gap: 6px; padding: 6px 12px; border-radius: 26px; } .bottom-tab-item { padding: 6px 16px; border-radius: 26px; } .bottom-tab-item.active { border-radius: 26px; } .bottom-tab-item-icon { font-size: 20px; } .bottom-tab-item-label { font-size: 9px; } }
+@media (max-width: 480px) { .bottom-tab-bar { gap: 4px; padding: 5px 10px; border-radius: 22px; } .bottom-tab-item { padding: 5px 14px; border-radius: 22px; } .bottom-tab-item.active { border-radius: 22px; } .bottom-tab-item-icon { font-size: 18px; } .bottom-tab-item-label { font-size: 9px; } }
 .chat-menu-dropdown { position: absolute; top: 100%; right: 0; background: var(--bg-primary); border-radius: var(--card-round); box-shadow: 0 8px 32px rgba(0,0,0,0.15); min-width: 160px; z-index: 100; display: none; margin-top: 4px; overflow: hidden; }
 .chat-menu-dropdown.show { display: block; animation: dropdownIn calc(0.25s * var(--anim-duration)) var(--ease-out); }
 .chat-menu-item { padding: 12px 16px; font-size: 14px; color: var(--text-primary); cursor: pointer; transition: background 0.15s; }
@@ -8632,7 +8652,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                             <button id="account-bind-captcha-refresh" class="captcha-refresh">↻</button>
                         </div>
                         <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-                            <input type="text" id="account-bind-code" class="setting-input" placeholder="邮箱验证码" style="flex:0 0 120px;width:120px;" />
+                            <input type="text" id="account-bind-code" class="setting-input" placeholder="邮箱验证码" style="flex:1;width:auto;" />
                             <button class="settings-save" id="account-send-bind-code-btn" style="white-space:nowrap;width:auto;padding:12px 16px;margin-top:0;">发送验证码</button>
                         </div>
                     </div>
@@ -8721,6 +8741,11 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                     <div class="chat-menu-switch" id="admin-email-register-switch"><div class="chat-menu-switch-knob"></div></div>
                 </div>
                 <div id="admin-email-config-section" style="display:none;">
+                </div>
+                <div class="setting-divider"></div>
+                <div class="setting-item" style="justify-content:space-between;">
+                    <div style="font-size:15px;color:var(--text-primary);">开放注册</div>
+                    <div class="chat-menu-switch" id="admin-register-switch"><div class="chat-menu-switch-knob"></div></div>
                 </div>
                 <div class="setting-divider"></div>
                 <div class="setting-section-title section-bar">Cloudflare Tunnel</div>
@@ -9383,7 +9408,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 reset_email = bot._web_password_config.get('reset_email', '')
                 users = list(target._context_tokens.keys())
                 account_email = account.email if account else ''
-                self._send_json({'admin_user': captcha_admin, 'reset_email': reset_email, 'users': users, 'password_set': bot._is_web_password_set(), 'email_register_enabled': bot._web_password_config.get('email_register_enabled', False), 'account_email': account_email})
+                self._send_json({'admin_user': captcha_admin, 'reset_email': reset_email, 'users': users, 'password_set': bot._is_web_password_set(), 'email_register_enabled': bot._web_password_config.get('email_register_enabled', False), 'registration_enabled': bot._web_password_config.get('registration_enabled', True), 'account_email': account_email})
 
             def _handle_bot_register(self, data):
                 username = str(data.get('username', '')).strip()
@@ -9393,6 +9418,9 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 server_ip = self._get_client_ip()
                 frontend_ip = str(data.get('client_ip', '')).strip()
                 client_ip = frontend_ip if frontend_ip and server_ip in ('127.0.0.1', '::1', 'localhost') else server_ip
+                if not bot._web_password_config.get('registration_enabled', True):
+                    self._send_json({'success': False, 'error': '注册已关闭'})
+                    return
                 if bot._web_password_config.get('email_register_enabled', False):
                     if not email:
                         self._send_json({'success': False, 'error': '请输入邮箱'})
@@ -10089,6 +10117,9 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                     self._send_json({'success': False, 'error': '图形验证码错误'})
                     return
                 bot._captcha_store.pop(session_token, None)
+                if not bot._web_password_config.get('registration_enabled', True):
+                    self._send_json({'success': False, 'error': '注册已关闭'})
+                    return
                 if not bot._web_password_config.get('email_register_enabled', False):
                     self._send_json({'success': False, 'error': '邮箱注册未启用'})
                     return
@@ -10105,6 +10136,16 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 bot._email_verification_codes[email] = {'code': code, 'expiry': now + 300}
                 bot._email_code_cooldown[email] = now
                 bot._send_email_verification(email, code)
+                self._send_json({'success': True})
+
+            def _handle_set_registration(self, data):
+                account = self._resolve_account()
+                if not account or not account.is_admin:
+                    self._send_json({'success': False, 'error': '无权限'})
+                    return
+                enabled = bool(data.get('enabled', False))
+                bot._web_password_config['registration_enabled'] = enabled
+                bot._save_web_password_config()
                 self._send_json({'success': True})
 
             def _handle_set_email_register(self, data):
