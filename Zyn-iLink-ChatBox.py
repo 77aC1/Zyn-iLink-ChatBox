@@ -839,7 +839,7 @@ class WeChatiLinkBot:
     MEDIA_TYPE_NAMES = {2: "图片", 3: "语音", 4: "文件", 5: "视频"}
     MEDIA_TYPE_PREFIXES = {"image": "[图片]", "video": "[视频]", "file": "[文件]", "voice": "[语音]"}
     EXPIRED_CODES = {-14, 40014, 1002}
-    SCRIPT_VERSION = "3.1.9"
+    SCRIPT_VERSION = "3.1.9-patched"
     AUTHOR_NAME = "ZynSync"
     
     def __init__(self):
@@ -7754,10 +7754,10 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
-:root { --bg-primary: rgba(255,255,255,0.92); --bg-secondary: rgba(245,245,245,0.92); --accent: #34C759; --accent-hover: #2DB84E; --accent-light: rgba(52,199,89,0.1); --text-primary: #1C1C1E; --text-secondary: #8E8E93; --text-hint: #C7C7CC; --bubble-out: #34C759; --bubble-in: rgba(255,255,255,0.92); --divider: rgba(60,60,67,0.12); --header-height: 56px; --nav-bg: rgba(249,249,249,0.95); --chat-bg: #F2F2F7; --input-bg: rgba(249,249,249,0.95); --setting-item-bg: rgba(255,255,255,0.92); --setting-arrow: #C7C7CC; --toggle-off: #E5E5EA;
+:root { --bg-primary: rgba(255,255,255,0.94); --bg-secondary: rgba(245,245,245,0.94); --accent: #FF6900; --accent-hover: #E55E00; --accent-light: rgba(255,105,0,0.1); --text-primary: #1C1C1E; --text-secondary: #8E8E93; --text-hint: #C7C7CC; --bubble-out: #FF6900; --bubble-in: rgba(255,255,255,0.94); --divider: rgba(60,60,67,0.12); --header-height: 56px; --nav-bg: rgba(249,249,249,0.95); --chat-bg: #F5F5F5; --input-bg: rgba(249,249,249,0.95); --setting-item-bg: rgba(255,255,255,0.94); --setting-arrow: #C7C7CC; --toggle-off: #E5E5EA;
 --glass-border: rgba(255,255,255,0.4);
 --glass-opacity: 0.5; --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in-out: cubic-bezier(0.45, 0, 0.15, 1); --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); --ease-standard: cubic-bezier(0.2, 0, 0, 1); --anim-duration: 1; }
-[data-theme="dark"] { --bg-primary: rgba(44,44,46,0.92); --bg-secondary: rgba(28,28,30,0.92); --accent: #30D158; --accent-hover: #28B84C; --accent-light: rgba(48,209,88,0.15); --text-primary: #F5F5F7; --text-secondary: #8E8E93; --text-hint: #636366; --bubble-out: #30D158; --bubble-in: rgba(44,44,46,0.92); --divider: rgba(84,84,88,0.36); --nav-bg: rgba(28,28,30,0.95); --chat-bg: #000000; --input-bg: rgba(28,28,30,0.95); --setting-item-bg: rgba(44,44,46,0.92); --setting-arrow: #48484A; --toggle-off: #39393D; --glass-border: rgba(255,255,255,0.08); }
+[data-theme="dark"] { --bg-primary: rgba(44,44,46,0.94); --bg-secondary: rgba(28,28,30,0.94); --accent: #FF8A33; --accent-hover: #E67A22; --accent-light: rgba(255,138,51,0.15); --text-primary: #F5F5F7; --text-secondary: #8E8E93; --text-hint: #636366; --bubble-out: #FF8A33; --bubble-in: rgba(44,44,46,0.94); --divider: rgba(84,84,88,0.36); --nav-bg: rgba(28,28,30,0.95); --chat-bg: #1A1A1A; --input-bg: rgba(28,28,30,0.95); --setting-item-bg: rgba(44,44,46,0.94); --setting-arrow: #48484A; --toggle-off: #39393D; --glass-border: rgba(255,255,255,0.08); }
 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 .qr-grid { display: grid; gap: 0; background: #FFFFFF; padding: 16px; border-radius: 12px; border: 1px solid var(--divider); max-width: 300px; width: auto; min-width: 180px; box-sizing: border-box; image-rendering: pixelated; margin: 0 auto; }
