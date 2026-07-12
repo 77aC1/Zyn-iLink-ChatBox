@@ -7754,6 +7754,8 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    background: var(--bg-primary);
+    color: var(--text-primary);
 }
 :root { --bg-primary: #FFFFFF; --bg-secondary: #F2F2F6; --accent: #0A84FF; --accent-hover: #0973E0; --accent-light: rgba(10,132,255,0.08); --text-primary: #1C1C1E; --text-secondary: #8E8E93; --text-hint: #C6C6C8; --bubble-out: #95EC69; --bubble-in: #FFFFFF; --divider: #E5E5EA; --header-height: 52px; --nav-bg: #FFFFFF; --chat-bg: #F2F2F6; --input-bg: #FFFFFF; --setting-item-bg: #FFFFFF; --setting-arrow: #C6C6C8; --toggle-off: #E5E5EA; --card-round: 12px; --card-mx: 16px; --card-px: 20px; --card-py: 14px; --card-shadow: 0 1px 3px rgba(0,0,0,0.04);
 --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in-out: cubic-bezier(0.45, 0, 0.15, 1); --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); --ease-standard: cubic-bezier(0.2, 0, 0, 1); --anim-duration: 1; }
@@ -8062,7 +8064,7 @@ html, body {
 .admin-user-item-check { color: var(--accent); font-size: 18px; font-weight: 700; }
 @media (max-width: 768px) { .chat-list-item { padding: 12px 14px; } .chat-list-item-avatar { width: 44px; height: 44px; font-size: 20px; } .chat-list-item-name { font-size: 15px; } .chat-list-item-msg { font-size: 12px; } .chat-back-btn { width: 28px; height: 28px; left: 8px; } .chat-header-menu-wrap { right: 8px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 8px; } .chat-list-add-btn { width: 28px; height: 28px; left: 8px; } }
 @media (max-width: 480px) { .chat-list-item { padding: 10px 12px; gap: 10px; } .chat-list-item-avatar { width: 40px; height: 40px; font-size: 18px; } .chat-list-item-name { font-size: 14px; } .chat-list-item-msg { font-size: 11px; } .chat-back-btn { width: 28px; height: 28px; left: 6px; } .chat-header-menu-wrap { right: 6px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 6px; } .chat-list-add-btn { width: 28px; height: 28px; left: 6px; } .nickname-modal-content { padding: 20px; } .lock-screen { padding: 16px; } .lock-screen-logo { font-size: 36px; margin-bottom: 12px; } .lock-screen-title { font-size: 20px; } .lock-screen-subtitle { font-size: 12px; margin-bottom: 24px; } .lock-screen-input { height: 44px; font-size: 15px; } .lock-screen-btn { height: 44px; font-size: 15px; } .lock-screen-reset-input { height: 40px; font-size: 14px; } .lock-screen-reset-btn { height: 40px; font-size: 14px; } .captcha-row { gap: 4px; } .captcha-input { padding: 0 8px; font-size: 14px; } .captcha-img { height: 40px; max-width: 80px; } .captcha-refresh { width: 28px; height: 40px; font-size: 16px; } }
-@supports (height: 100dvh) { html, body { height: 100dvh; } #app { height: 100dvh; } }
+@supports (height: 100dvh) { html, body { height: 100dvh; } #app { height: 100dvh; background: var(--bg-primary); } }
 body.keyboard-open .chat-container { height: 100vh; height: 100dvh; }
 body.keyboard-open .media-panel { display: none !important; }
 body.keyboard-open .plus-button.active { transform: none; color: var(--text-secondary); }
@@ -10322,7 +10324,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 <title>Zyn iLink ChatBox</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html, body { font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 450; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; height: 100%; }
+html, body { font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 450; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; height: 100%; background: var(--bg-primary); color: var(--text-primary); }
 :root { --bg-primary: #FFFFFF; --bg-secondary: #F2F2F6; --accent: #0A84FF; --accent-hover: #0973E0; --accent-light: rgba(10,132,255,0.08); --text-primary: #1C1C1E; --text-secondary: #8E8E93; --text-hint: #C6C6C8; --divider: #E5E5EA; --chat-bg: #F2F2F6; }
 [data-theme="dark"] { --bg-primary: #2C2C2E; --bg-secondary: #1C1C1E; --accent: #0A84FF; --accent-hover: #0973E0; --accent-light: rgba(10,132,255,0.15); --text-primary: #F5F5F7; --text-secondary: #8E8E93; --text-hint: #636366; --divider: #38383A; --chat-bg: #1C1C1E; }
 .lock-screen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--chat-bg); z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
