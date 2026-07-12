@@ -5592,22 +5592,7 @@ class WeChatiLinkBot:
         } else {
             root.classList.remove('no-animations');
         }
-        var opacity = 0.5;
-        var isDark = root.getAttribute('data-theme') === 'dark';
-        if (isDark) {
-            root.style.setProperty('--bg-primary', 'rgba(44,44,46,' + opacity + ')');
-            root.style.setProperty('--bg-secondary', 'rgba(28,28,30,' + opacity + ')');
-            root.style.setProperty('--bubble-in', 'rgba(44,44,46,' + opacity + ')');
-            root.style.setProperty('--nav-bg', 'rgba(28,28,30,' + Math.min(opacity + 0.03, 0.98) + ')');
-            root.style.setProperty('--setting-item-bg', 'rgba(44,44,46,' + opacity + ')');
-        } else {
-            root.style.setProperty('--bg-primary', 'rgba(255,255,255,' + opacity + ')');
-            root.style.setProperty('--bg-secondary', 'rgba(245,245,245,' + opacity + ')');
-            root.style.setProperty('--bubble-in', 'rgba(255,255,255,' + opacity + ')');
-            root.style.setProperty('--nav-bg', 'rgba(249,249,249,' + Math.min(opacity + 0.03, 0.98) + ')');
-            root.style.setProperty('--setting-item-bg', 'rgba(255,255,255,' + opacity + ')');
-        }
-        root.style.setProperty('--glass-opacity', opacity);
+        root.style.setProperty('--glass-opacity', '1');
         var speed = cfg.animSpeed || 1;
         root.style.setProperty('--anim-duration', speed);
     };
@@ -8062,8 +8047,8 @@ html, body {
 .admin-user-item.selected { background: var(--accent-light); }
 .admin-user-item-name { flex: 1; font-size: 15px; color: var(--text-primary); }
 .admin-user-item-check { color: var(--accent); font-size: 18px; font-weight: 700; }
-@media (max-width: 768px) { .chat-list-item { padding: 12px 14px; } .chat-list-item-avatar { width: 44px; height: 44px; font-size: 20px; } .chat-list-item-name { font-size: 15px; } .chat-list-item-msg { font-size: 12px; } .chat-back-btn { width: 28px; height: 28px; left: 8px; } .chat-header-menu-wrap { right: 8px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 8px; } .chat-list-add-btn { width: 28px; height: 28px; left: 8px; } }
-@media (max-width: 480px) { .chat-list-item { padding: 10px 12px; gap: 10px; } .chat-list-item-avatar { width: 40px; height: 40px; font-size: 18px; } .chat-list-item-name { font-size: 14px; } .chat-list-item-msg { font-size: 11px; } .chat-back-btn { width: 28px; height: 28px; left: 6px; } .chat-header-menu-wrap { right: 6px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 6px; } .chat-list-add-btn { width: 28px; height: 28px; left: 6px; } .nickname-modal-content { padding: 20px; } .lock-screen { padding: 16px; } .lock-screen-logo { font-size: 36px; margin-bottom: 12px; } .lock-screen-title { font-size: 20px; } .lock-screen-subtitle { font-size: 12px; margin-bottom: 24px; } .lock-screen-input { height: 44px; font-size: 15px; } .lock-screen-btn { height: 44px; font-size: 15px; } .lock-screen-reset-input { height: 40px; font-size: 14px; } .lock-screen-reset-btn { height: 40px; font-size: 14px; } .captcha-row { gap: 4px; } .captcha-input { padding: 0 8px; font-size: 14px; } .captcha-img { height: 40px; max-width: 80px; } .captcha-refresh { width: 28px; height: 40px; font-size: 16px; } }
+@media (max-width: 768px) { .chat-list-item { padding: 12px 14px; } .chat-list-item-avatar { width: 44px; height: 44px; font-size: 20px; } .chat-list-item-name { font-size: 15px; } .chat-list-item-msg { font-size: 12px; } .chat-back-btn { width: 28px; height: 28px; left: 8px; } .user-list-back-btn { width: 28px; height: 28px; left: 8px; } .chat-header-menu-wrap { right: 8px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 8px; } .chat-list-add-btn { width: 28px; height: 28px; left: 8px; } }
+@media (max-width: 480px) { .chat-list-item { padding: 10px 12px; gap: 10px; } .chat-list-item-avatar { width: 40px; height: 40px; font-size: 18px; } .chat-list-item-name { font-size: 14px; } .chat-list-item-msg { font-size: 11px; } .chat-back-btn { width: 28px; height: 28px; left: 6px; } .user-list-back-btn { width: 28px; height: 28px; left: 6px; } .chat-header-menu-wrap { right: 6px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 6px; } .chat-list-add-btn { width: 28px; height: 28px; left: 6px; } .nickname-modal-content { padding: 20px; } .lock-screen { padding: 16px; } .lock-screen-logo { font-size: 36px; margin-bottom: 12px; } .lock-screen-title { font-size: 20px; } .lock-screen-subtitle { font-size: 12px; margin-bottom: 24px; } .lock-screen-input { height: 44px; font-size: 15px; } .lock-screen-btn { height: 44px; font-size: 15px; } .lock-screen-reset-input { height: 40px; font-size: 14px; } .lock-screen-reset-btn { height: 40px; font-size: 14px; } .captcha-row { gap: 4px; } .captcha-input { padding: 0 8px; font-size: 14px; } .captcha-img { height: 40px; max-width: 80px; } .captcha-refresh { width: 28px; height: 40px; font-size: 16px; } }
 @supports (height: 100dvh) { html, body { height: 100dvh; } #app { height: 100dvh; background: var(--bg-primary); } }
 body.keyboard-open .chat-container { height: 100vh; height: 100dvh; }
 body.keyboard-open .media-panel { display: none !important; }
@@ -8086,6 +8071,8 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .user-list-page { display: none; flex-direction: column; width: 100%; height: 100vh; height: 100dvh; background: var(--chat-bg); }
 .user-list-page.active { display: flex; animation: fadeIn 0.3s ease; }
 .user-list-header { height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); position: relative; }
+.user-list-back-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
+.user-list-back-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
 .user-list-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
 .user-list-add-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .user-list-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--chat-bg); }
@@ -8258,7 +8245,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
     </div>
     <div id="user-list-page" class="user-list-page">
         <div class="user-list-header">
-            <button id="user-list-back-btn" class="chat-list-settings-btn" style="left:12px;right:auto;" title="返回"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <button id="user-list-back-btn" class="user-list-back-btn" title="返回"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
             <span class="user-list-header-title">用户列表</span>
             <button id="user-list-add-btn" class="user-list-add-btn"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
         </div>
