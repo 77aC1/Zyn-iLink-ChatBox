@@ -7867,9 +7867,9 @@ html, body {
 .settings-nav-header .back-btn { width: 28px; height: 28px; border: none; background: transparent; color: var(--accent); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard); }
 .settings-nav-header .back-btn:active { transform: scale(0.96); }
 .settings-nav-header .nav-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
-.settings-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-top: 64px; padding-bottom: 100px; }
+.settings-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-top: 16px; padding-bottom: 100px; }
 .settings-group { margin: 0 var(--card-mx) 16px; background: var(--setting-item-bg); border-radius: var(--card-round); overflow: hidden; box-shadow: var(--card-shadow); }
-.settings-group:first-child { margin-top: 8px; }
+.settings-group:first-child { margin-top: 0; }
 .settings-group-title { padding: 22px var(--card-px) 6px; font-size: 13px; font-weight: 400; color: var(--text-secondary); letter-spacing: 0.3px; }
 .settings-item { display: flex; align-items: center; padding: var(--card-py) var(--card-px); background: var(--setting-item-bg); cursor: pointer; transition: background 0.2s; min-height: 52px; }
 .settings-item:active { background: var(--accent-light); }
@@ -7879,7 +7879,7 @@ html, body {
 .settings-item-label { font-size: 16px; color: var(--text-primary); font-weight: 400; }
 .settings-item-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
 .settings-item-arrow { color: var(--setting-arrow); font-size: 20px; margin-left: 8px; flex-shrink: 0; font-weight: 300; line-height: 1; }
-.user-mgmt-item { display: flex; align-items: center; padding: var(--card-py) var(--card-px); background: var(--setting-item-bg); border-bottom: 0.5px solid var(--divider); gap: 12px; }
+.user-mgmt-item { display: flex; align-items: center; padding: var(--card-py) var(--card-px); background: var(--setting-item-bg); border-bottom: 0.5px solid var(--divider); gap: 12px; border-radius: var(--card-round); }
 .user-mgmt-item-info { flex: 1; min-width: 0; }
 .user-mgmt-item-name { font-size: 15px; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .user-mgmt-item-id { font-size: 12px; color: var(--text-hint); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -7953,11 +7953,11 @@ html, body {
 .chat-list-container.active { display: flex; animation: fadeIn 0.3s ease; }
 .chat-list-header { height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); }
 .chat-list-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
-.chat-list-settings-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
-.chat-list-settings-btn:active { transform: translateY(-50%) scale(0.96); background: var(--accent-light); }
-.chat-list-add-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s, box-shadow 0.3s; box-shadow: 0 2px 8px rgba(10,132,255,0.25); }
-.chat-list-add-btn:hover { background: var(--accent-hover); box-shadow: 0 4px 14px rgba(10,132,255,0.25); }
-.chat-list-add-btn:active { transform: translateY(-50%) scale(0.96); }
+#chat-list-settings-btn { display: none !important; }
+
+#chat-list-add-btn { display: none !important; }
+
+
 .chat-list-items { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: transparent; padding: 8px 0; }
 .chat-list-item { display: flex; align-items: center; padding: 14px var(--card-px); cursor: pointer; border-bottom: 0.5px solid var(--divider); gap: 12px; }
 .chat-list-item:first-child { border-radius: 14px 14px 0 0; }
