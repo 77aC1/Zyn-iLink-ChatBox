@@ -7942,9 +7942,12 @@ html, body {
 .chat-list-container.active { display: flex; animation: fadeIn 0.3s ease; }
 .chat-list-header { height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); }
 .chat-list-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
-#chat-list-settings-btn { display: none !important; }
+.chat-list-add-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
+.chat-list-add-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
+.chat-list-settings-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
+.chat-list-settings-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
 
-#chat-list-add-btn { display: none !important; }
+
 
 
 .chat-list-items { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: transparent; padding: 8px 0; }
@@ -8051,8 +8054,8 @@ html, body {
 .admin-user-item.selected { background: var(--accent-light); }
 .admin-user-item-name { flex: 1; font-size: 15px; color: var(--text-primary); }
 .admin-user-item-check { color: var(--accent); font-size: 18px; font-weight: 700; }
-@media (max-width: 768px) { .chat-list-item { padding: 12px 14px; } .chat-list-item-avatar { width: 44px; height: 44px; font-size: 20px; } .chat-list-item-name { font-size: 15px; } .chat-list-item-msg { font-size: 12px; } .chat-back-btn { width: 28px; height: 28px; left: 8px; } .user-list-back-btn { width: 28px; height: 28px; left: 8px; } .chat-header-menu-wrap { right: 8px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 8px; } .chat-list-add-btn { width: 28px; height: 28px; left: 8px; } }
-@media (max-width: 480px) { .chat-list-item { padding: 10px 12px; gap: 10px; } .chat-list-item-avatar { width: 40px; height: 40px; font-size: 18px; } .chat-list-item-name { font-size: 14px; } .chat-list-item-msg { font-size: 11px; } .chat-back-btn { width: 28px; height: 28px; left: 6px; } .user-list-back-btn { width: 28px; height: 28px; left: 6px; } .chat-header-menu-wrap { right: 6px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 6px; } .chat-list-add-btn { width: 28px; height: 28px; left: 6px; } .nickname-modal-content { padding: 20px; } .lock-screen { padding: 16px; } .lock-screen-logo { font-size: 36px; margin-bottom: 12px; } .lock-screen-title { font-size: 20px; } .lock-screen-subtitle { font-size: 12px; margin-bottom: 24px; } .lock-screen-input { height: 44px; font-size: 15px; } .lock-screen-btn { height: 44px; font-size: 15px; } .lock-screen-reset-input { height: 40px; font-size: 14px; } .lock-screen-reset-btn { height: 40px; font-size: 14px; } .captcha-row { gap: 4px; } .captcha-input { padding: 0 8px; font-size: 14px; } .captcha-img { height: 40px; max-width: 80px; } .captcha-refresh { width: 28px; height: 40px; font-size: 16px; } }
+@media (max-width: 768px) { .chat-list-item { padding: 12px 14px; } .chat-list-item-avatar { width: 44px; height: 44px; font-size: 20px; } .chat-list-item-name { font-size: 15px; } .chat-list-item-msg { font-size: 12px; } .chat-back-btn { width: 28px; height: 28px; left: 8px; } .user-list-back-btn { width: 28px; height: 28px; left: 8px; } .chat-header-menu-wrap { right: 8px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 8px; } .chat-list-add-btn { width: 28px; height: 28px; left: 8px; } .user-list-add-btn { width: 28px; height: 28px; right: 8px; } }
+@media (max-width: 480px) { .chat-list-item { padding: 10px 12px; gap: 10px; } .chat-list-item-avatar { width: 40px; height: 40px; font-size: 18px; } .chat-list-item-name { font-size: 14px; } .chat-list-item-msg { font-size: 11px; } .chat-back-btn { width: 28px; height: 28px; left: 6px; } .user-list-back-btn { width: 28px; height: 28px; left: 6px; } .chat-header-menu-wrap { right: 6px; } .chat-header-menu-btn { width: 28px; height: 28px; } .chat-list-settings-btn { width: 28px; height: 28px; right: 6px; } .chat-list-add-btn { width: 28px; height: 28px; left: 6px; } .user-list-add-btn { width: 28px; height: 28px; right: 6px; } .nickname-modal-content { padding: 20px; } .lock-screen { padding: 16px; } .lock-screen-logo { font-size: 36px; margin-bottom: 12px; } .lock-screen-title { font-size: 20px; } .lock-screen-subtitle { font-size: 12px; margin-bottom: 24px; } .lock-screen-input { height: 44px; font-size: 15px; } .lock-screen-btn { height: 44px; font-size: 15px; } .lock-screen-reset-input { height: 40px; font-size: 14px; } .lock-screen-reset-btn { height: 40px; font-size: 14px; } .captcha-row { gap: 4px; } .captcha-input { padding: 0 8px; font-size: 14px; } .captcha-img { height: 40px; max-width: 80px; } .captcha-refresh { width: 28px; height: 40px; font-size: 16px; } }
 @supports (height: 100dvh) { html, body { height: 100dvh; } #app { height: 100dvh; background: var(--bg-primary); } }
 body.keyboard-open .chat-container { height: 100vh; height: 100dvh; }
 body.keyboard-open .media-panel { display: none !important; }
@@ -8077,7 +8080,10 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .user-list-header { position: relative; height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); }
 .user-list-back-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
 .user-list-back-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
+.user-list-add-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
+.user-list-add-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
 .user-list-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
+
 
 .user-list-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--chat-bg); }
 .user-list-body { background: var(--setting-item-bg); border-radius: var(--card-round); margin: 12px var(--card-mx); overflow: hidden; padding: 0; }
@@ -8252,6 +8258,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         <div class="user-list-header">
             <button id="user-list-back-btn" class="user-list-back-btn" title="返回"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
             <span class="user-list-header-title">用户列表</span>
+            <button id="user-list-add-btn" class="user-list-add-btn" title="添加用户"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
         </div>
         <div class="user-list-scroll">
             <div class="user-list-body" id="user-mgmt-list">
@@ -8291,7 +8298,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
             <div class="settings-group">
                 <div class="settings-item" id="settings-theme-item">
-                    <div class="settings-item-icon" style="background:#F0E6FF;color:#7C3AED;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#F0E6FF;color:#7C3AED;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">深色模式</div>
                     </div>
@@ -8302,7 +8309,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
             <div class="settings-group">
                 <div class="settings-item" id="settings-appearance-item">
-                    <div class="settings-item-icon" style="background:#E3F2FD;color:#2196F3;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#E3F2FD;color:#2196F3;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">外观设置</div>
                         <div class="settings-item-desc">动画与透明度</div>
@@ -8312,7 +8319,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
             <div class="settings-group">
                 <div class="settings-item" id="settings-api-item">
-                    <div class="settings-item-icon" style="background:#E8F8EF;color:#07C160;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#E8F8EF;color:#07C160;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">AI 回复设置</div>
                         <div class="settings-item-desc">配置 AI 自动回复参数</div>
@@ -8322,7 +8329,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
             <div class="settings-group">
                 <div class="settings-item" id="settings-announcement-item">
-                    <div class="settings-item-icon" style="background:#E8F8EF;color:#07C160;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#E8F8EF;color:#07C160;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">公告</div>
                         <div class="settings-item-desc">查看最新公告信息</div>
@@ -8332,7 +8339,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
             <div class="settings-group">
                 <div class="settings-item" id="settings-password-item">
-                    <div class="settings-item-icon" style="background:#FCE4EC;color:#E91E63;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#FCE4EC;color:#E91E63;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">密码设置</div>
                         <div class="settings-item-desc">设置访问密码与验证码接收用户</div>
@@ -8342,7 +8349,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
             <div class="settings-group">
                 <div class="settings-item" id="settings-account-item">
-                    <div class="settings-item-icon" style="background:#E8F5E9;color:#4CAF50;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#E8F5E9;color:#4CAF50;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">账号管理</div>
                         <div class="settings-item-desc">修改密码与注销账号</div>
@@ -8352,7 +8359,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
             <div class="settings-group">
                 <div class="settings-item" id="settings-admin-item" style="display:none;">
-                    <div class="settings-item-icon" style="background:#FFF3E0;color:#FF9800;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#FFF3E0;color:#FF9800;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">管理员面板</div>
                         <div class="settings-item-desc">用户管理与系统公告</div>
@@ -8363,7 +8370,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 
             <div class="settings-group">
                 <div class="settings-item" id="settings-about-item">
-                    <div class="settings-item-icon" style="background:#FFF4E6;color:#FA8C16;">Zyn</div>
+                    <div class="settings-item-icon" style="background:#FFF4E6;color:#FA8C16;"> </div>
                     <div class="settings-item-content">
                         <div class="settings-item-label">关于</div>
                         <div class="settings-item-desc">查看作者与版本信息</div>
