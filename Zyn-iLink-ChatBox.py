@@ -7867,7 +7867,7 @@ html, body {
 .settings-nav-header .back-btn { width: 28px; height: 28px; border: none; background: transparent; color: var(--accent); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard); }
 .settings-nav-header .back-btn:active { transform: scale(0.96); }
 .settings-nav-header .nav-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
-.settings-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-top: 16px; padding-bottom: 100px; }
+.settings-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-top: 8px; padding-bottom: 100px; }
 .settings-group { margin: 0 var(--card-mx) 16px; background: var(--setting-item-bg); border-radius: var(--card-round); overflow: hidden; box-shadow: var(--card-shadow); }
 .settings-group:first-child { margin-top: 0; }
 .settings-group-title { padding: 22px var(--card-px) 6px; font-size: 13px; font-weight: 400; color: var(--text-secondary); letter-spacing: 0.3px; }
@@ -8095,6 +8095,8 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .user-list-body > .chat-list-item:first-child { border-radius: var(--card-round) var(--card-round) 0 0; }
 .user-list-body > .chat-list-item:last-child { border-radius: 0 0 var(--card-round) var(--card-round); }
 .user-list-body > .chat-list-item:only-child { border-radius: var(--card-round); }
+.user-list-page .chat-list-items > .chat-list-item { background: var(--setting-item-bg); border-radius: var(--card-round); margin: 0 var(--card-mx) 8px; border-bottom: none; }
+.user-list-page .chat-list-items > .chat-list-item + .chat-list-item { border-top: 0.5px solid var(--divider); }
 @media (max-width: 768px) { .pc-sidebar-nav { display: none !important; } .bottom-tab-bar { gap: 8px; padding: 8px 12px; } .bottom-tab-item { padding: 5px 14px; } .bottom-tab-item-icon { font-size: 20px; } .bottom-tab-item-label { font-size: 9px; } }
 @media (max-width: 480px) { .bottom-tab-bar { gap: 6px; padding: 8px 10px; border-radius: 18px; } .bottom-tab-item { padding: 4px 12px; } .bottom-tab-item-icon { font-size: 18px; } .bottom-tab-item-label { font-size: 9px; } }
 .chat-menu-dropdown { position: absolute; top: 100%; right: 0; background: var(--bg-primary); border-radius: var(--card-round); box-shadow: 0 8px 32px rgba(0,0,0,0.15); min-width: 160px; z-index: 100; display: none; margin-top: 4px; overflow: hidden; }
