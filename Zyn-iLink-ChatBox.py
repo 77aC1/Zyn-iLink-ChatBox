@@ -8735,17 +8735,17 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
                 <div id="admin-banned-ip-list" style="margin-bottom:16px;"></div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title section-bar">邮箱注册</div>
+                <div class="setting-section-title section-bar">注册</div>
+                <div class="setting-item" style="justify-content:space-between;">
+                    <div style="font-size:15px;color:var(--text-primary);">开放注册</div>
+                    <div class="chat-menu-switch" id="admin-register-switch"><div class="chat-menu-switch-knob"></div></div>
+                </div>
+                <div class="setting-divider"></div>
                 <div class="setting-item" style="justify-content:space-between;">
                     <div style="font-size:15px;color:var(--text-primary);">启用邮箱注册</div>
                     <div class="chat-menu-switch" id="admin-email-register-switch"><div class="chat-menu-switch-knob"></div></div>
                 </div>
                 <div id="admin-email-config-section" style="display:none;">
-                </div>
-                <div class="setting-divider"></div>
-                <div class="setting-item" style="justify-content:space-between;">
-                    <div style="font-size:15px;color:var(--text-primary);">开放注册</div>
-                    <div class="chat-menu-switch" id="admin-register-switch"><div class="chat-menu-switch-knob"></div></div>
                 </div>
                 <div class="setting-divider"></div>
                 <div class="setting-section-title section-bar">Cloudflare Tunnel</div>
@@ -8763,7 +8763,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                         <input type="number" id="cf-port-input" class="setting-input" value="1145" style="flex:0 0 100px;width:100px;" min="1" max="65535" />
                         <span style="font-size:11px;color:var(--text-hint);">cloudflared tunnel --url http://localhost:&lt;端口&gt;</span>
                     </div>
-                    <div style="display:flex;gap:8px;">
+                    <div style="display:flex;gap:8px;margin-top:12px;">
                         <button class="settings-save" id="cf-start-btn" style="flex:1;padding:12px 20px;margin-top:0;">启动隧道</button>
                         <button class="settings-save" id="cf-stop-btn" style="flex:1;padding:12px 20px;margin-top:0;background:#FF3B30;">停止隧道</button>
                     </div>
