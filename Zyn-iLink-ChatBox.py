@@ -7859,10 +7859,8 @@ html, body {
 .settings-item { display: flex; align-items: center; padding: var(--card-py) var(--card-px); background: var(--setting-item-bg); cursor: pointer; transition: background 0.2s; min-height: 52px; }
 .settings-item:active { background: var(--accent-light); }
 .settings-item + .settings-item { border-top: 0.5px solid var(--divider); margin-left: var(--card-px); margin-right: var(--card-px); padding-left: 0; padding-right: 0; }
-.settings-item-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 14px; font-size: 16px; flex-shrink: 0; }
 .settings-item-content { flex: 1; min-width: 0; }
-.settings-item-label { font-size: 16px; color: var(--text-primary); font-weight: 400; position: relative; padding-left: 20px; }
-.settings-item-label::before { content: ""; position: absolute; left: 0; top: 6px; height: 14px; width: 3px; background: var(--accent); border-radius: 2px; }
+.settings-item-label { font-size: 16px; color: var(--text-primary); font-weight: 400; }
 .settings-item-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
 .settings-item-arrow { color: var(--setting-arrow); font-size: 20px; margin-left: 8px; flex-shrink: 0; font-weight: 300; line-height: 1; }
 .user-mgmt-item { display: flex; align-items: center; padding: var(--card-py) var(--card-px); background: transparent; border-bottom: 0.5px solid var(--divider); gap: 12px; }
@@ -7902,7 +7900,7 @@ html, body {
 .settings-save:active { transform: scale(0.97); }
 .setting-divider { height: 10px; background: transparent; }
 .setting-section-title { font-size: 13px; font-weight: 400; color: var(--text-secondary); margin: 20px var(--card-px) 6px; letter-spacing: 0.3px; }
-.setting-section-title.section-bar { position: relative; margin-left: calc(var(--card-px) - 3px); padding-left: 11px; }
+.setting-section-title.section-bar { position: relative; margin-left: 0; padding-left: 6px; }
 .setting-section-title.section-bar::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 13px; border-radius: 2px; background: var(--accent); }
 .about-logo { display: flex; flex-direction: column; align-items: center; padding: 24px 0 16px; }
 .about-logo-circle { width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 600; box-shadow: 0 4px 16px rgba(10,132,255,0.3); }
@@ -7942,10 +7940,8 @@ html, body {
 .chat-list-container.active { display: flex; animation: fadeIn 0.3s ease; }
 .chat-list-header { height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); }
 .chat-list-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
-.chat-list-add-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
-.chat-list-add-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
-.chat-list-settings-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
-.chat-list-settings-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
+.chat-list-add-btn { display: none !important; }
+.chat-list-settings-btn { display: none !important; }
 
 
 
@@ -8288,18 +8284,14 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         </div>
         <div class="settings-scroll">
             <div class="settings-group">
-                <div class="settings-item" id="settings-tutorial-item">
-                    <div class="settings-item-icon" style="background:#FFF3E0;color:#FF6D00;">!</div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-tutorial-item"><div class="settings-item-content">
                         <div class="settings-item-label">使用教程（必看）</div>
                     </div>
                     <div class="settings-item-arrow">›</div>
                 </div>
             </div>
             <div class="settings-group">
-                <div class="settings-item" id="settings-theme-item">
-                    <div class="settings-item-icon" style="background:#F0E6FF;color:#7C3AED;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-theme-item"><div class="settings-item-content">
                         <div class="settings-item-label">深色模式</div>
                     </div>
                     <div class="settings-item-action">
@@ -8308,9 +8300,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
             </div>
             <div class="settings-group">
-                <div class="settings-item" id="settings-appearance-item">
-                    <div class="settings-item-icon" style="background:#E3F2FD;color:#2196F3;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-appearance-item"><div class="settings-item-content">
                         <div class="settings-item-label">外观设置</div>
                         <div class="settings-item-desc">动画与透明度</div>
                     </div>
@@ -8318,9 +8308,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
             </div>
             <div class="settings-group">
-                <div class="settings-item" id="settings-api-item">
-                    <div class="settings-item-icon" style="background:#E8F8EF;color:#07C160;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-api-item"><div class="settings-item-content">
                         <div class="settings-item-label">AI 回复设置</div>
                         <div class="settings-item-desc">配置 AI 自动回复参数</div>
                     </div>
@@ -8328,9 +8316,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
             </div>
             <div class="settings-group">
-                <div class="settings-item" id="settings-announcement-item">
-                    <div class="settings-item-icon" style="background:#E8F8EF;color:#07C160;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-announcement-item"><div class="settings-item-content">
                         <div class="settings-item-label">公告</div>
                         <div class="settings-item-desc">查看最新公告信息</div>
                     </div>
@@ -8338,9 +8324,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
             </div>
             <div class="settings-group">
-                <div class="settings-item" id="settings-password-item">
-                    <div class="settings-item-icon" style="background:#FCE4EC;color:#E91E63;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-password-item"><div class="settings-item-content">
                         <div class="settings-item-label">密码设置</div>
                         <div class="settings-item-desc">设置访问密码与验证码接收用户</div>
                     </div>
@@ -8348,9 +8332,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
             </div>
             <div class="settings-group">
-                <div class="settings-item" id="settings-account-item">
-                    <div class="settings-item-icon" style="background:#E8F5E9;color:#4CAF50;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-account-item"><div class="settings-item-content">
                         <div class="settings-item-label">账号管理</div>
                         <div class="settings-item-desc">修改密码与注销账号</div>
                     </div>
@@ -8358,9 +8340,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
             </div>
             <div class="settings-group">
-                <div class="settings-item" id="settings-admin-item" style="display:none;">
-                    <div class="settings-item-icon" style="background:#FFF3E0;color:#FF9800;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-admin-item" style="display:none;"><div class="settings-item-content">
                         <div class="settings-item-label">管理员面板</div>
                         <div class="settings-item-desc">用户管理与系统公告</div>
                     </div>
@@ -8369,9 +8349,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             </div>
 
             <div class="settings-group">
-                <div class="settings-item" id="settings-about-item">
-                    <div class="settings-item-icon" style="background:#FFF4E6;color:#FA8C16;"> </div>
-                    <div class="settings-item-content">
+                <div class="settings-item" id="settings-about-item"><div class="settings-item-content">
                         <div class="settings-item-label">关于</div>
                         <div class="settings-item-desc">查看作者与版本信息</div>
                     </div>
@@ -8639,7 +8617,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         </div>
         <div class="settings-scroll">
             <div class="settings-body">
-                <div class="setting-section-title">绑定邮箱</div>
+                <div class="setting-section-title section-bar">绑定邮箱</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
                     <div id="account-email-status" style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;">未绑定邮箱</div>
                     <div style="display:flex;gap:8px;align-items:center;">
@@ -8657,13 +8635,13 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                     <button class="settings-save" id="account-bind-email-btn" style="margin-top:8px;">绑定邮箱</button>
                 </div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">当前账号</div>
+                <div class="setting-section-title section-bar">当前账号</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
                     <div style="font-size:14px;color:var(--text-secondary);">当前登录账号</div>
                     <div id="account-current-username" style="font-size:16px;font-weight:600;color:var(--text-primary);"></div>
                 </div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">修改密码</div>
+                <div class="setting-section-title section-bar">修改密码</div>
                 <div class="setting-item">
                     <label class="setting-label">原密码</label>
                     <input type="password" id="account-old-password" class="setting-input" placeholder="输入原密码" />
@@ -8678,14 +8656,14 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
                 <button class="settings-save" id="account-change-password-btn">修改密码</button>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">注销账号</div>
+                <div class="setting-section-title section-bar">注销账号</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
                     <div style="font-size:13px;color:#FF3B30;margin-bottom:4px;">注销后账号数据将无法恢复</div>
                     <input type="password" id="account-delete-password" class="setting-input" placeholder="输入密码以确认注销" />
                 </div>
                 <button class="settings-save" id="account-delete-btn" style="background:#FF3B30;">注销账号</button>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">退出登录</div>
+                <div class="setting-section-title section-bar">退出登录</div>
                 <button class="settings-save" id="account-logout-btn" style="background:#FF9500;">退出登录</button>
             </div>
         </div>
