@@ -6949,7 +6949,7 @@ class WeChatiLinkBot:
                     var urlEl = document.getElementById("cf-url-display");
                     if (cfResp.running) {
                         if (dot) dot.style.background = "var(--accent)";
-                        if (text) text.textContent = "运行中" + (cfResp.url ? " - " + cfResp.url : "");
+                        if (text) text.textContent = "运行中";
                         if (urlEl && cfResp.url) { urlEl.textContent = "隧道地址: " + cfResp.url; var cb = document.getElementById("cf-copy-btn"); if (cb) cb.style.display = ""; }
                     } else {
                         if (dot) dot.style.background = "var(--text-secondary)";
@@ -8028,8 +8028,8 @@ html, body {
 .lock-screen-back-btn { background: none; border: none; color: var(--text-secondary); font-size: 14px; cursor: pointer; padding: 8px 16px; margin-top: 4px; }
 .lock-screen-back-btn:active { opacity: 0.7; }
 .captcha-row { display: flex; align-items: center; gap: 6px; width: 100%; margin-bottom: 10px; }
-.captcha-input { flex: 1; min-width: 0; height: 44px; border: none; border-radius: var(--card-round); padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); text-align: center; letter-spacing: 2px; }
-.captcha-input:focus { background: var(--bg-primary); box-shadow: 0 0 0 1.5px var(--accent); }
+.captcha-input { flex: 1; min-width: 0; height: 44px; border: 1px solid var(--divider); border-radius: var(--card-round); padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); text-align: center; letter-spacing: 2px; box-sizing: border-box; }
+.captcha-input:focus { background: var(--bg-primary); border-color: var(--accent); box-shadow: 0 0 0 1.5px var(--accent); }
 .captcha-img { height: 44px; max-width: 100px; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
 .captcha-refresh { width: 32px; height: 44px; border: none; border-radius: 10px; background: var(--bg-primary); color: var(--text-secondary); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); }
 .captcha-refresh:active { transform: scale(0.96); }
@@ -8630,7 +8630,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                         <button id="account-bind-captcha-refresh" class="captcha-refresh">↻</button>
                     </div>
                     <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-                        <input type="text" id="account-bind-code" class="setting-input" placeholder="邮箱验证码" style="flex:1;width:auto;" />
+                        <input type="text" id="account-bind-code" class="setting-input" placeholder="邮箱验证码" style="flex:0 0 120px;width:120px;" />
                         <button class="settings-save" id="account-send-bind-code-btn" style="white-space:nowrap;width:auto;padding:12px 16px;margin-top:0;">发送验证码</button>
                     </div>
                     <button class="settings-save" id="account-bind-email-btn" style="margin-top:8px;">绑定邮箱</button>
@@ -10332,8 +10332,8 @@ html, body { font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", "Hirag
 .lock-screen-back-btn { background: none; border: none; color: var(--text-secondary); font-size: 14px; cursor: pointer; padding: 8px 16px; margin-top: 4px; }
 .lock-screen-back-btn:active { opacity: 0.7; }
 .captcha-row { display: flex; align-items: center; gap: 6px; width: 100%; margin-bottom: 10px; }
-.captcha-input { flex: 1; min-width: 0; height: 44px; border: none; border-radius: var(--card-round); padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); text-align: center; letter-spacing: 2px; }
-.captcha-input:focus { background: var(--bg-primary); box-shadow: 0 0 0 1.5px var(--accent); }
+.captcha-input { flex: 1; min-width: 0; height: 44px; border: 1px solid var(--divider); border-radius: var(--card-round); padding: 0 12px; font-size: 15px; outline: none; background: var(--bg-secondary); color: var(--text-primary); text-align: center; letter-spacing: 2px; box-sizing: border-box; }
+.captcha-input:focus { background: var(--bg-primary); border-color: var(--accent); box-shadow: 0 0 0 1.5px var(--accent); }
 .captcha-img { height: 44px; max-width: 100px; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
 .captcha-refresh { width: 32px; height: 44px; border: none; border-radius: 10px; background: var(--bg-primary); color: var(--text-secondary); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 0 0 0.5px var(--divider); }
 .captcha-refresh:active { transform: scale(0.96); }
