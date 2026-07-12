@@ -7861,7 +7861,8 @@ html, body {
 .settings-item + .settings-item { border-top: 0.5px solid var(--divider); margin-left: var(--card-px); margin-right: var(--card-px); padding-left: 0; padding-right: 0; }
 .settings-item-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 14px; font-size: 16px; flex-shrink: 0; }
 .settings-item-content { flex: 1; min-width: 0; }
-.settings-item-label { font-size: 16px; color: var(--text-primary); font-weight: 400; }
+.settings-item-label { font-size: 16px; color: var(--text-primary); font-weight: 400; position: relative; padding-left: 20px; }
+.settings-item-label::before { content: ""; position: absolute; left: 0; top: 6px; height: 14px; width: 3px; background: var(--accent); border-radius: 2px; }
 .settings-item-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
 .settings-item-arrow { color: var(--setting-arrow); font-size: 20px; margin-left: 8px; flex-shrink: 0; font-weight: 300; line-height: 1; }
 .user-mgmt-item { display: flex; align-items: center; padding: var(--card-py) var(--card-px); background: transparent; border-bottom: 0.5px solid var(--divider); gap: 12px; }
@@ -7901,6 +7902,8 @@ html, body {
 .settings-save:active { transform: scale(0.97); }
 .setting-divider { height: 10px; background: transparent; }
 .setting-section-title { font-size: 13px; font-weight: 400; color: var(--text-secondary); margin: 20px var(--card-px) 6px; letter-spacing: 0.3px; }
+.setting-section-title.section-bar { position: relative; margin-left: calc(var(--card-px) - 3px); padding-left: 11px; }
+.setting-section-title.section-bar::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 13px; border-radius: 2px; background: var(--accent); }
 .about-logo { display: flex; flex-direction: column; align-items: center; padding: 24px 0 16px; }
 .about-logo-circle { width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 600; box-shadow: 0 4px 16px rgba(10,132,255,0.3); }
 .about-logo-img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background: var(--bg-secondary); box-shadow: 0 4px 16px rgba(10,132,255,0.25); cursor: pointer; transition: box-shadow calc(0.2s * var(--anim-duration)) var(--ease-standard), transform calc(0.2s * var(--anim-duration)) var(--ease-standard); }
@@ -8071,11 +8074,11 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .bottom-tab-item-label { font-size: 10px; font-weight: 600; letter-spacing: 0.3px; }
 .user-list-page { display: none; flex-direction: column; width: 100%; height: 100vh; height: 100dvh; background: var(--chat-bg); }
 .user-list-page.active { display: flex; animation: fadeIn 0.3s ease; }
-.user-list-header { height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); position: relative; }
+.user-list-header { position: relative; height: var(--header-height); background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); }
 .user-list-back-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: transparent; color: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform calc(0.2s * var(--anim-duration)) var(--ease-standard), background 0.2s; }
 .user-list-back-btn:active { transform: translateY(-50%) scale(0.92); background: var(--accent-light); }
 .user-list-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); }
-.user-list-add-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
 .user-list-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--chat-bg); }
 .user-list-body { background: var(--setting-item-bg); border-radius: var(--card-round); margin: 12px var(--card-mx); overflow: hidden; padding: 0; }
 .user-list-body > .chat-list-item { background: var(--setting-item-bg); border-bottom: none; margin-bottom: 0.5px; }
@@ -8249,7 +8252,6 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         <div class="user-list-header">
             <button id="user-list-back-btn" class="user-list-back-btn" title="返回"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
             <span class="user-list-header-title">用户列表</span>
-            <button id="user-list-add-btn" class="user-list-add-btn"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
         </div>
         <div class="user-list-scroll">
             <div class="user-list-body" id="user-mgmt-list">
@@ -8428,7 +8430,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                     <textarea id="system-prompt" class="setting-input" rows="3" placeholder="你是一个微信聊天助手..."></textarea>
                 </div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">识图 AI 设置</div>
+                <div class="setting-section-title section-bar">识图 AI 设置</div>
                 <div class="setting-item">
                     <label class="setting-checkbox">
                         <input type="checkbox" id="vision-enabled"> 启用识图功能
@@ -8447,7 +8449,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                     <input type="text" id="vision-model" class="setting-input" placeholder="gpt-4o">
                 </div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">生图 AI 设置</div>
+                <div class="setting-section-title section-bar">生图 AI 设置</div>
                 <div class="setting-item">
                     <label class="setting-checkbox">
                         <input type="checkbox" id="image-gen-enabled"> 启用生图功能
@@ -8466,7 +8468,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                     <input type="text" id="image-gen-model" class="setting-input" placeholder="dall-e-3">
                 </div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">文件识别 AI 设置</div>
+                <div class="setting-section-title section-bar">文件识别 AI 设置</div>
                 <div class="setting-item">
                     <label class="setting-checkbox">
                         <input type="checkbox" id="file-recognize-enabled"> 启用文件识别
@@ -8494,7 +8496,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                     </label>
                 </div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">AI回复间隔</div>
+                <div class="setting-section-title section-bar">AI回复间隔</div>
                 <div class="setting-item">
                     <label class="setting-label">AI回复冷却时间(秒)</label>
                     <input type="number" id="ai-cooldown" class="setting-input" value="5" min="0" max="300">
