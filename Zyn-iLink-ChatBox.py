@@ -6950,11 +6950,12 @@ class WeChatiLinkBot:
                     if (cfResp.running) {
                         if (dot) dot.style.background = "var(--accent)";
                         if (text) text.textContent = "运行中" + (cfResp.url ? " - " + cfResp.url : "");
-                        if (urlEl && cfResp.url) urlEl.textContent = "隧道地址: " + cfResp.url;
+                        if (urlEl && cfResp.url) { urlEl.textContent = "隧道地址: " + cfResp.url; var cb = document.getElementById("cf-copy-btn"); if (cb) cb.style.display = ""; }
                     } else {
                         if (dot) dot.style.background = "var(--text-secondary)";
                         if (text) text.textContent = "未运行";
                         if (urlEl) urlEl.textContent = "";
+                        var cb = document.getElementById("cf-copy-btn"); if (cb) cb.style.display = "none";
                     }
                 }
             } catch(e) {}
@@ -8098,12 +8099,12 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .chat-menu-item { padding: 12px 16px; font-size: 14px; color: var(--text-primary); cursor: pointer; transition: background 0.15s; }
 .chat-menu-item:active { background: var(--bg-secondary); }
 .chat-menu-toggle { display: flex; align-items: center; justify-content: space-between; }
-.chat-menu-switch { width: 44px; height: 26px; border-radius: 13px; background: var(--bg-secondary); position: relative; transition: background 0.2s; flex-shrink: 0; }
+.chat-menu-switch { width: 44px; height: 26px; border-radius: 13px; background: var(--toggle-off); position: relative; transition: background 0.2s; flex-shrink: 0; }
 .chat-menu-switch.on { background: var(--accent); }
 .chat-menu-switch-knob { width: 22px; height: 22px; border-radius: 50%; background: white; position: absolute; top: 2px; left: 2px; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 .chat-menu-switch.on .chat-menu-switch-knob { transform: translateX(18px); }
-.user-prompt-textarea { width: 100%; padding: 12px 14px; border: none; border-radius: var(--card-round); font-size: 14px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 16px; transition: box-shadow 0.3s; resize: vertical; min-height: 100px; max-height: 300px; font-family: inherit; line-height: 1.5; }
-.user-prompt-textarea:focus { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.user-prompt-textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--divider); border-radius: var(--card-round); font-size: 14px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 16px; transition: box-shadow 0.3s, border-color 0.3s; resize: vertical; min-height: 100px; max-height: 300px; font-family: inherit; line-height: 1.5; box-sizing: border-box; }
+.user-prompt-textarea:focus { border-color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
 @media (min-width: 769px) { #app { display: flex !important; flex-direction: row; } .chat-list-container { width: 320px; min-width: 320px; max-width: 380px; height: 100vh; height: 100dvh; position: relative; border-right: 0.5px solid var(--divider); flex-shrink: 0; } .chat-list-container.active { display: flex; animation: none; } .chat-list-header { position: relative; top: 0; left: 0; right: 0; border-radius: 0; box-shadow: none; border-bottom: 0.5px solid var(--divider); } .chat-list-items { padding-top: 0; padding-bottom: 20px; } .chat-container { position: relative; width: auto; flex: 1; height: 100vh; height: 100dvh; } .chat-container.active { display: flex; animation: none; } .chat-back-btn { display: none; } .chat-header { position: relative; top: 0; left: 0; right: 0; border-radius: 0; box-shadow: none; border-bottom: 0.5px solid var(--divider); padding: 0 48px 0 16px; } .messages-area { padding-top: 56px; padding-bottom: 16px; } .input-area { position: relative; padding-bottom: 8px; } .media-panel { position: relative; bottom: auto; border-radius: 0; } .bottom-tab-bar { display: none !important; } .user-list-page { width: 320px; min-width: 320px; max-width: 380px; height: 100vh; height: 100dvh; position: relative; border-right: 0.5px solid var(--divider); flex-shrink: 0; } .user-list-page.active { display: flex; animation: none; } .user-list-header { position: relative; top: 0; left: 0; right: 0; border-radius: 0; box-shadow: none; border-bottom: 0.5px solid var(--divider); } .user-list-scroll { padding-top: 0; } .settings-panel { position: fixed; } .settings-nav-header { position: relative; top: 0; left: 0; right: 0; border-radius: 0; box-shadow: none; border-bottom: 0.5px solid var(--divider); } .settings-scroll { padding-top: 16px; } .chat-list-item { margin: 0; border-radius: 0; } .chat-list-item:first-child { border-radius: 0; } .chat-list-item:last-child { border-radius: 0; } .chat-list-empty { padding: 40px 20px; } .pc-sidebar { display: flex; flex-direction: column; width: 320px; min-width: 320px; max-width: 380px; height: 100vh; height: 100dvh; background: var(--chat-bg); border-right: 0.5px solid var(--divider); flex-shrink: 0; overflow: hidden; } .pc-sidebar-header { height: 56px; background: var(--nav-bg); display: flex; align-items: center; justify-content: center; padding: 0 16px; flex-shrink: 0; border-bottom: 0.5px solid var(--divider); } .pc-sidebar-header-title { font-size: 17px; font-weight: 600; color: var(--text-primary); } .pc-sidebar-add-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s, background 0.2s; box-shadow: 0 2px 8px rgba(10,132,255,0.25); } .pc-sidebar-add-btn:hover { background: var(--accent-hover); } .pc-sidebar-add-btn:active { transform: translateY(-50%) scale(0.96); } .pc-sidebar-tabs { display: flex; border-bottom: 0.5px solid var(--divider); background: var(--nav-bg); } .pc-sidebar-tab { flex: 1; padding: 10px; text-align: center; font-size: 13px; font-weight: 600; color: var(--text-secondary); cursor: pointer; border: none; background: transparent; transition: color 0.2s, background 0.2s; } .pc-sidebar-tab.active { color: var(--accent); background: var(--accent-light); } .pc-sidebar-tab:hover { background: var(--accent-light); } .pc-sidebar-content { flex: 1; overflow-y: auto; } .pc-chat-empty { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-hint); font-size: 15px; } }
 </style>
 </head>
@@ -8675,33 +8676,33 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
         </div>
         <div class="settings-scroll">
             <div class="settings-body">
-                <div class="setting-section-title">所有用户</div>
+                <div class="setting-section-title section-bar">所有用户</div>
                 <div id="admin-panel-user-list" style="margin-bottom:16px;max-height:300px;overflow-y:auto;"></div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">注销用户</div>
+                <div class="setting-section-title section-bar">注销用户</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
                     <div style="font-size:13px;color:#FF3B30;margin-bottom:4px;">注销后账号数据将无法恢复</div>
                     <input type="number" id="admin-delete-index" class="setting-input" placeholder="输入用户序号" min="1" />
                 </div>
                 <button class="settings-save" id="admin-delete-user-btn" style="background:#FF3B30;">注销用户</button>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">强制下线</div>
+                <div class="setting-section-title section-bar">强制下线</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
                     <div style="font-size:13px;color:#FF9500;margin-bottom:4px;">强制用户下线并删除指纹登录</div>
                     <input type="number" id="admin-force-offline-index" class="setting-input" placeholder="输入用户序号" min="1" />
                 </div>
                 <button class="settings-save" id="admin-force-offline-btn" style="background:#FF9500;">强制下线</button>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">发送系统公告</div>
+                <div class="setting-section-title section-bar">发送系统公告</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
                     <textarea id="admin-announcement-content" class="user-prompt-textarea" rows="4" placeholder="输入公告内容..."></textarea>
                 </div>
                 <button class="settings-save" id="admin-send-announcement-btn">发送公告</button>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">历史公告</div>
+                <div class="setting-section-title section-bar">历史公告</div>
                 <div id="admin-announcement-list" style="margin-bottom:16px;"></div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">封禁IP</div>
+                <div class="setting-section-title section-bar">封禁IP</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
                     <div style="font-size:13px;color:#FF3B30;margin-bottom:4px;">封禁后该IP无法访问任何页面</div>
                     <div style="display:flex;gap:8px;align-items:center;">
@@ -8711,7 +8712,7 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 </div>
                 <div id="admin-banned-ip-list" style="margin-bottom:16px;"></div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">邮箱注册</div>
+                <div class="setting-section-title section-bar">邮箱注册</div>
                 <div class="setting-item" style="justify-content:space-between;">
                     <div style="font-size:15px;color:var(--text-primary);">启用邮箱注册</div>
                     <div class="chat-menu-switch" id="admin-email-register-switch"><div class="chat-menu-switch-knob"></div></div>
@@ -8719,13 +8720,16 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                 <div id="admin-email-config-section" style="display:none;">
                 </div>
                 <div class="setting-divider"></div>
-                <div class="setting-section-title">Cloudflare Tunnel</div>
+                <div class="setting-section-title section-bar">Cloudflare Tunnel</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:8px;">
                     <div style="display:flex;align-items:center;gap:8px;">
                         <span id="cf-status-dot" style="width:10px;height:10px;border-radius:50%;background:#999;flex-shrink:0;"></span>
                         <span id="cf-status-text" style="font-size:14px;color:var(--text-secondary);">未运行</span>
                     </div>
-                    <div style="font-size:12px;color:var(--text-secondary);word-break:break-all;" id="cf-url-display"></div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div style="font-size:12px;color:var(--text-secondary);word-break:break-all;flex:1;" id="cf-url-display"></div>
+                        <button id="cf-copy-btn" style="display:none;flex-shrink:0;padding:6px 12px;border-radius:8px;background:var(--accent);color:#fff;border:none;font-size:12px;cursor:pointer;transition:transform 0.2s,background 0.2s;white-space:nowrap;" onclick="var u=document.getElementById('cf-url-display').textContent.replace('隧道地址: ','');if(u){navigator.clipboard.writeText(u).then(function(){this.textContent='已复制';var t=this;setTimeout(function(){t.textContent='复制'},2000)}.bind(this)).catch(function(){})}">复制</button>
+                    </div>
                     <div style="font-size:11px;color:var(--text-secondary);">cloudflared tunnel --url http://localhost:1145</div>
                     <div style="display:flex;gap:8px;">
                         <button class="settings-save" id="cf-start-btn" style="flex:1;padding:12px 20px;margin-top:0;">启动隧道</button>
