@@ -6865,7 +6865,8 @@ class WeChatiLinkBot:
         var cfStartBtn = document.getElementById("cf-start-btn");
         if (cfStartBtn) cfStartBtn.addEventListener("click", async function() {
             try {
-                var resp = await _api("admin-cloudflared", {action: "start"});
+                var port = (document.getElementById("cf-port-input") || {}).value || 1145;
+                var resp = await _api("admin-cloudflared", {action: "start", port: parseInt(port) || 1145});
                 if (resp && resp.success) { _toast("Cloudflare Tunnel 已启动"); _loadAdminPanel(); }
                 else { _toast((resp && resp.error) || "启动失败"); }
             } catch(e) { _toast("启动失败"); }
@@ -8010,8 +8011,8 @@ html, body {
 .lock-screen-title { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
 .lock-screen-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
 .lock-screen-form { width: 100%; max-width: 320px; }
-.lock-screen-input { width: 100%; height: 48px; border: none; border-radius: var(--card-round); padding: 0 20px; font-size: 16px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 12px; text-align: center; letter-spacing: 4px; }
-.lock-screen-input:focus { box-shadow: 0 4px 20px rgba(10,132,255,0.15), inset 0 0 0 1.5px var(--accent); }
+.lock-screen-input { width: 100%; height: 48px; border: 1px solid var(--divider); border-radius: var(--card-round); padding: 0 20px; font-size: 16px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 12px; text-align: center; letter-spacing: 4px; box-sizing: border-box; }
+.lock-screen-input:focus { border-color: var(--accent); box-shadow: 0 4px 20px rgba(10,132,255,0.15), inset 0 0 0 1.5px var(--accent); }
 .lock-screen-btn { width: 100%; height: 48px; border-radius: var(--card-round); border: none; background: var(--accent); color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; }
 .lock-screen-btn:active { transform: scale(0.96); }
 .lock-screen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -8065,9 +8066,9 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .appearance-slider::-webkit-slider-thumb:active { transform: scale(0.92); }
 .appearance-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: white; cursor: pointer; border: 2px solid var(--accent); box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
 .appearance-slider-val { min-width: 36px; text-align: center; font-size: 14px; font-weight: 600; color: var(--accent); }
-.bottom-tab-bar { position: fixed; bottom: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 4px; z-index: 1001; padding: 8px 16px 12px; background: var(--nav-bg); border-top: 0.5px solid var(--divider); transition: transform calc(0.35s * var(--anim-duration)) var(--ease-out), opacity calc(0.3s * var(--anim-duration)); }
-.bottom-tab-bar.hidden { transform: translateY(100px); opacity: 0; pointer-events: none; }
-.bottom-tab-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px 18px; border-radius: var(--card-round); cursor: pointer; transition: background 0.2s; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; border: none; background: transparent; color: var(--text-secondary); }
+.bottom-tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; justify-content: center; gap: 4px; z-index: 1001; padding: 8px 12px; background: var(--nav-bg); border-radius: 24px; border: 0.5px solid var(--divider); box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform calc(0.35s * var(--anim-duration)) var(--ease-out), opacity calc(0.3s * var(--anim-duration)); margin-bottom: 12px; }
+.bottom-tab-bar.hidden { transform: translateX(-50%) translateY(100px); opacity: 0; pointer-events: none; }
+.bottom-tab-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px 18px; border-radius: 20px; cursor: pointer; transition: background 0.2s; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; border: none; background: transparent; color: var(--text-secondary); }
 .bottom-tab-item:active { transform: scale(0.92); }
 .bottom-tab-item.active { color: var(--accent); background: var(--accent-light); }
 .bottom-tab-item-icon { font-size: 22px; display: flex; align-items: center; justify-content: center; }
@@ -8092,8 +8093,8 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
 .user-list-page .chat-list-items { background: var(--setting-item-bg); border-radius: var(--card-round); margin: 12px var(--card-mx); overflow: hidden; padding: 0; }
 .user-list-page .chat-list-items > .chat-list-item { background: transparent; border-radius: 0; margin: 0; border-bottom: 0.5px solid var(--divider); }
 .user-list-page .chat-list-items > .chat-list-item:last-child { border-bottom: none; }
-@media (max-width: 768px) { .pc-sidebar-nav { display: none !important; } .bottom-tab-bar { gap: 8px; padding: 8px 12px; } .bottom-tab-item { padding: 5px 14px; } .bottom-tab-item-icon { font-size: 20px; } .bottom-tab-item-label { font-size: 9px; } }
-@media (max-width: 480px) { .bottom-tab-bar { gap: 6px; padding: 8px 10px; border-radius: 18px; } .bottom-tab-item { padding: 4px 12px; } .bottom-tab-item-icon { font-size: 18px; } .bottom-tab-item-label { font-size: 9px; } }
+@media (max-width: 768px) { .pc-sidebar-nav { display: none !important; } .bottom-tab-bar { gap: 6px; padding: 6px 10px; border-radius: 22px; } .bottom-tab-item { padding: 5px 14px; } .bottom-tab-item-icon { font-size: 20px; } .bottom-tab-item-label { font-size: 9px; } }
+@media (max-width: 480px) { .bottom-tab-bar { gap: 4px; padding: 4px 8px; border-radius: 18px; } .bottom-tab-item { padding: 4px 12px; } .bottom-tab-item-icon { font-size: 18px; } .bottom-tab-item-label { font-size: 9px; } }
 .chat-menu-dropdown { position: absolute; top: 100%; right: 0; background: var(--bg-primary); border-radius: var(--card-round); box-shadow: 0 8px 32px rgba(0,0,0,0.15); min-width: 160px; z-index: 100; display: none; margin-top: 4px; overflow: hidden; }
 .chat-menu-dropdown.show { display: block; animation: dropdownIn calc(0.25s * var(--anim-duration)) var(--ease-out); }
 .chat-menu-item { padding: 12px 16px; font-size: 14px; color: var(--text-primary); cursor: pointer; transition: background 0.15s; }
@@ -8620,18 +8621,20 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
             <div class="settings-body">
                 <div class="setting-section-title section-bar">绑定邮箱</div>
                 <div class="setting-item" style="flex-direction:column;align-items:stretch;gap:4px;">
-                    <div id="account-email-status" style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;">未绑定邮箱</div>
-                    <div style="display:flex;gap:8px;align-items:center;">
-                        <input type="email" id="account-bind-email" class="setting-input" placeholder="输入邮箱地址" style="flex:1;width:auto;" />
-                    </div>
-                    <div class="captcha-row" style="margin-top:8px;">
-                        <input type="text" id="account-bind-captcha" class="captcha-input" placeholder="图形验证码" autocomplete="off" />
-                        <img id="account-bind-captcha-img" class="captcha-img" src="" alt="验证码" />
-                        <button id="account-bind-captcha-refresh" class="captcha-refresh">↻</button>
-                    </div>
-                    <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-                        <input type="text" id="account-bind-code" class="setting-input" placeholder="邮箱验证码" style="flex:0 0 120px;width:120px;" />
-                        <button class="settings-save" id="account-send-bind-code-btn" style="white-space:nowrap;width:auto;padding:12px 16px;margin-top:0;">发送验证码</button>
+                    <div id="account-email-status" style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;margin-left:var(--card-mx);">未绑定邮箱</div>
+                    <div style="margin:0 var(--card-mx);">
+                        <div style="display:flex;gap:8px;align-items:center;">
+                            <input type="email" id="account-bind-email" class="setting-input" placeholder="输入邮箱地址" style="flex:1;width:auto;" />
+                        </div>
+                        <div class="captcha-row" style="margin-top:8px;">
+                            <input type="text" id="account-bind-captcha" class="captcha-input" placeholder="图形验证码" autocomplete="off" />
+                            <img id="account-bind-captcha-img" class="captcha-img" src="" alt="验证码" />
+                            <button id="account-bind-captcha-refresh" class="captcha-refresh">↻</button>
+                        </div>
+                        <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+                            <input type="text" id="account-bind-code" class="setting-input" placeholder="邮箱验证码" style="flex:0 0 120px;width:120px;" />
+                            <button class="settings-save" id="account-send-bind-code-btn" style="white-space:nowrap;width:auto;padding:12px 16px;margin-top:0;">发送验证码</button>
+                        </div>
                     </div>
                     <button class="settings-save" id="account-bind-email-btn" style="margin-top:8px;">绑定邮箱</button>
                 </div>
@@ -8730,7 +8733,11 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                         <div style="font-size:12px;color:var(--text-secondary);word-break:break-all;flex:1;" id="cf-url-display"></div>
                         <button id="cf-copy-btn" style="display:none;flex-shrink:0;padding:6px 12px;border-radius:8px;background:var(--accent);color:#fff;border:none;font-size:12px;cursor:pointer;transition:transform 0.2s,background 0.2s;white-space:nowrap;" onclick="var u=document.getElementById('cf-url-display').textContent.replace('隧道地址: ','');if(u){navigator.clipboard.writeText(u).then(function(){this.textContent='已复制';var t=this;setTimeout(function(){t.textContent='复制'},2000)}.bind(this)).catch(function(){})}">复制</button>
                     </div>
-                    <div style="font-size:11px;color:var(--text-secondary);">cloudflared tunnel --url http://localhost:1145</div>
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span style="font-size:13px;color:var(--text-secondary);white-space:nowrap;">本地端口</span>
+                        <input type="number" id="cf-port-input" class="setting-input" value="1145" style="flex:0 0 100px;width:100px;" min="1" max="65535" />
+                        <span style="font-size:11px;color:var(--text-hint);">cloudflared tunnel --url http://localhost:&lt;端口&gt;</span>
+                    </div>
                     <div style="display:flex;gap:8px;">
                         <button class="settings-save" id="cf-start-btn" style="flex:1;padding:12px 20px;margin-top:0;">启动隧道</button>
                         <button class="settings-save" id="cf-stop-btn" style="flex:1;padding:12px 20px;margin-top:0;background:#FF3B30;">停止隧道</button>
@@ -9947,8 +9954,9 @@ body.keyboard-open #app { height: auto; min-height: 100vh; min-height: 100dvh; }
                         self._send_json({'success': False, 'error': 'Cloudflare Tunnel 已在运行中'})
                         return
                     try:
+                        port = data.get('port', 1145)
                         bot._cf_process = subprocess.Popen(
-                            ['cloudflared', 'tunnel', '--url', 'http://localhost:1145'],
+                            ['cloudflared', 'tunnel', '--url', f'http://localhost:{port}'],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                             text=True, bufsize=1
                         )
@@ -10314,8 +10322,8 @@ html, body { font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", "Hirag
 .lock-screen-title { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
 .lock-screen-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
 .lock-screen-form { width: 100%; max-width: 320px; }
-.lock-screen-input { width: 100%; height: 48px; border: none; border-radius: var(--card-round); padding: 0 20px; font-size: 16px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 12px; text-align: center; letter-spacing: 4px; }
-.lock-screen-input:focus { box-shadow: 0 4px 20px rgba(10,132,255,0.15), inset 0 0 0 1.5px var(--accent); }
+.lock-screen-input { width: 100%; height: 48px; border: 1px solid var(--divider); border-radius: var(--card-round); padding: 0 20px; font-size: 16px; outline: none; background: var(--bg-secondary); color: var(--text-primary); margin-bottom: 12px; text-align: center; letter-spacing: 4px; box-sizing: border-box; }
+.lock-screen-input:focus { border-color: var(--accent); box-shadow: 0 4px 20px rgba(10,132,255,0.15), inset 0 0 0 1.5px var(--accent); }
 .lock-screen-btn { width: 100%; height: 48px; border-radius: var(--card-round); border: none; background: var(--accent); color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; }
 .lock-screen-btn:active { transform: scale(0.96); }
 .lock-screen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
